@@ -1,5 +1,5 @@
 {
-    "name": "normal/thinkphp-monolog",
+    "name": "normal/think-monolog",
     "description": "Thinkphp3.2集成Monolog扩展",
     "license": "MIT",
     "authors": [
