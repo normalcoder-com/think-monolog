@@ -1,0 +1,21 @@
+{
+    "name": "normal/thinkphp-monolog",
+    "description": "Thinkphp3.2集成Monolog扩展",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "诺墨",
+            "email": "normal@normalcoder.com"
+        }
+    ],
+    "require" :
+    {
+        "monolog/monolog" : "^1.16"
+    },
+    "autoload" :
+    {
+        "files" : [
+            "Logger.php", "Monolog.php"
+        ]
+    }
+}
