@@ -1,9 +1,12 @@
 <?php
 /**
- * User: normalcoder
- * Date: 2017/12/04
- * Time: 17:34
+ * Project: think-monolog
+ * Author: 诺墨 <normal@normalcoder.com>:
+ * Github: https://github.com/normalcoder-com/think-monolog.git
+ * Time: 2018/05/24 上午5:21
+ * Discript: 日志类，调用接入Monolog
  */
+
 namespace normalcoder\Think;
 
 use Monolog\Handler\HandlerInterface;
@@ -13,8 +16,8 @@ use Monolog\Processor\WebProcessor;
 use Monolog\Processor\MemoryProcessor;
 
 /**
- * @method static Mlogger pushHandler( HandlerInterface $handler) Pushes a handler on to the stack.
- * @method static Mlogger pushProcessor( callable $callback)
+ * @method static Mlogger pushHandler(HandlerInterface $handler) Pushes a handler on to the stack.
+ * @method static Mlogger pushProcessor(callable $callback)
  * @method static Mlogger setHandlers(array $handlers)  Set handlers, replacing all existing ones. If a map is passed, keys will be ignored.
  * @method static HandlerInterface popHandler() Pops a handler from the stack
  * @method static HandlerInterface[] getHandlers()
@@ -62,12 +65,12 @@ class Logger
     static public function init()
     {
         if (!self::$logger instanceof Mlogger) {
-            strtolower(C('LOG_TYPE'))=='monolog' && C('SHOW_PAGE_TRACE',false); // 关闭, 以将日志记录到 \Think\Log::$log
-            self::$logger = new Mlogger('Monolog');
-            $handler = new StreamHandler( C('LOG_PATH').date('y_m_d').'.log', Logger::DEBUG);
+            strtolower(C('LOG_TYPE')) == 'monolog' && C('SHOW_PAGE_TRACE', false); // 关闭, 以将日志记录到 \Think\Log::$log
+            self::$logger = new Mlogger(MODULE_NAME . '.' . CONTROLLER_NAME . '.' . ACTION_NAME);
+            $handler = new StreamHandler(C('LOG_PATH') . date('y_m_d') . '.log', Logger::DEBUG);
             $handler->getFormatter()->allowInlineLineBreaks();
             $handler->getFormatter()->ignoreEmptyContextAndExtra();
-            self::$logger->pushProcessor( new WebProcessor() );
+            //self::$logger->pushProcessor( new WebProcessor() );
             self::$logger->pushHandler($handler);
         }
     }
@@ -79,15 +82,15 @@ class Logger
     }
 
 
-    static public function __callStatic( $method, $paramters )
+    static public function __callStatic($method, $paramters)
     {
         self::init();
-        if (method_exists( self::$logger, $method )) {
-            return call_user_func_array(array(self::$logger,$method), $paramters);
+        if (method_exists(self::$logger, $method)) {
+            return call_user_func_array(array(self::$logger, $method), $paramters);
         }
-        if (method_exists( 'Mlogger',$method )) {
-            return forward_static_call_array(array('Mlogger',$method), $paramters);
-        }else{
+        if (method_exists('Mlogger', $method)) {
+            return forward_static_call_array(array('Mlogger', $method), $paramters);
+        } else {
             throw new \RuntimeException('方法不存在');
         }
     }

@@ -1,8 +1,10 @@
 <?php
 /**
- * User: normalcoder
- * Date: 2017/12/04
- * Time: 17:34
+ * Project: think-monolog
+ * Author: 诺墨 <normal@normalcoder.com>:
+ * Github: https://github.com/normalcoder-com/think-monolog.git
+ * Time: 2018/05/24 上午5:27
+ * Discript: 日志类，调用接入Monolog
  */
 
 namespace Think\Log\Driver;
@@ -24,34 +26,38 @@ class Monolog
     {
         $logger = Logger::getLogger();
         if ($logger->getHandlers()) {
-            $level = strstr($log, ':', true);
-            $msg = ltrim(strstr($log, ':'), ':');
-            switch ($level) {
-                case Log::ERR:
-                    $level = Mlogger::ERROR;
-                    break;
-                case Log::EMERG:
-                    $level = Mlogger::EMERGENCY;
-                    break;
-                case Log::INFO:
-                    $level = Mlogger::INFO;
-                    break;
-                case Log::WARN:
-                    $level = Mlogger::WARNING;
-                    break;
-                case Log::NOTICE:
-                    $level = Mlogger::NOTICE;
-                    break;
-                case Log::ALERT:
-                    $level = Mlogger::ALERT;
-                    break;
-                case Log::CRIT:
-                    $level = Mlogger::CRITICAL;
-                    break;
-                default:
-                    $level = Mlogger::DEBUG;
+            if (false !== strpos($log, 'INFO: [ app_begin ] --START--')) { //取消对ThinkPHP运行生命周期 trace Log 的记录
+                //$logger->addRecord(Mlogger::EMERGENCY,"\r\n".$log);
+            } else {
+                $level = strstr($log, ':', true);
+                $msg = ltrim(strstr($log, ':'), ':');
+                switch ($level) {
+                    case Log::ERR:
+                        $level = Mlogger::ERROR;
+                        break;
+                    case Log::EMERG:
+                        $level = Mlogger::EMERGENCY;
+                        break;
+                    case Log::INFO:
+                        $level = Mlogger::INFO;
+                        break;
+                    case Log::WARN:
+                        $level = Mlogger::WARNING;
+                        break;
+                    case Log::NOTICE:
+                        $level = Mlogger::NOTICE;
+                        break;
+                    case Log::ALERT:
+                        $level = Mlogger::ALERT;
+                        break;
+                    case Log::CRIT:
+                        $level = Mlogger::CRITICAL;
+                        break;
+                    default:
+                        $level = Mlogger::DEBUG;
+                }
+                $logger->addRecord($level, $msg);
             }
-            $logger->addRecord($level, $msg);
         }
     }
 }
