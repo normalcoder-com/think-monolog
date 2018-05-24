@@ -19,10 +19,6 @@ ThinkPHP 3.2 集成 Monolog 的扩展组件
 
 ---
 
-[toc]
-
----
-
 <a name="%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"></a>
 
 # 安装使用
@@ -166,9 +162,7 @@ Monolog 是 Laravel,Symfony,Silex 默认集成的日志库, 同时大量其他�
 Monolog可以把你的日志发送到文件，sockets，收件箱，数据库和各种web服务器上。一些特殊的组件可以给你带来特殊的日志策略。同时，它支持以各种方式记录日志: 记录到文件,mail,nosql,mail,irc,firephp,elasticsearch服务器....
 
 > #### 相关Github仓库：
-
 > Monolog: <https://github.com/Seldaek/monolog>
-
 > Monolog docs: <https://github.com/Seldaek/monolog/tree/master/doc>
 
 ---
