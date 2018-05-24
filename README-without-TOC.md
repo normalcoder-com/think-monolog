@@ -122,7 +122,7 @@ if (false !== strpos($log, 'INFO: [ app_begin ] --START--')) { //取消对ThinkP
 
 # 关于
 
-###Monolog简介
+### Monolog简介
 
 Monolog 是 Laravel,Symfony,Silex 默认集成的日志库, 同时大量其他框架提供了集成扩展。它是一款极为流行的 php log 库, 自带超多handler, 长期维护, 稳定更新。
 
