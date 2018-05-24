@@ -1,18 +1,3 @@
-* [项目介绍](#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D)
-* [安装使用](#%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8)
-    * [安装](#%E5%AE%89%E8%A3%85)
-    * [如何使用](#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8)
-* [自定义](#%E8%87%AA%E5%AE%9A%E4%B9%89)
-    * [默认行为](#%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA)
-    * [示例：](#%E7%A4%BA%E4%BE%8B%EF%BC%9A)
-    * [接管TP默认trace行为](#%E6%8E%A5%E7%AE%A1TP%E9%BB%98%E8%AE%A4trace%E8%A1%8C%E4%B8%BA)
-* [关于](#%E5%85%B3%E4%BA%8E)
-    * [Monolog简介](#Monolog%E7%AE%80%E4%BB%8B)
-* [感谢](#%E6%84%9F%E8%B0%A2)
-
-
-
-<a name="%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"></a>
 
 # 项目介绍
 ThinkPHP 3.2 集成 Monolog 的扩展组件
@@ -23,19 +8,13 @@ ThinkPHP 3.2 集成 Monolog 的扩展组件
 
 ---
 
-<a name="%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"></a>
-
 # 安装使用
 [如何安装Composer - composer中文文档](http://www.kancloud.cn/thinkphp/composer)
-
-<a name="%E5%AE%89%E8%A3%85"></a>
 
 ### 安装
 ```
 composer require normal/think-monolog:dev-master
 ```
-<a name="%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"></a>
-
 ### 如何使用
 安装完成后, 就可以立即在应用的代码中这样使用 Monolog:
 
@@ -57,19 +36,13 @@ composer require normal/think-monolog:dev-master
 
 ---
 
-<a name="%E8%87%AA%E5%AE%9A%E4%B9%89"></a>
-
 # 自定义
-<a name="%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"></a>
-
 ### 默认行为
 
 think-monolog 默认向monolog注册了 StreamHandler, 日志级别为debug, 这就是为什么安装后可以直接使用的原因.
 
 既然我们用monolog, 肯定是为了使用其提供的丰富的 handlers. 而不是为了仅仅在文件中记录日志. 下面将通过一个实例说明如何自定义 monolog
 
-
-<a name="%E7%A4%BA%E4%BE%8B%EF%BC%9A"></a>
 
 ### 示例：
 
@@ -118,8 +91,6 @@ return array(
 );
 ```
 
-<a name="%E6%8E%A5%E7%AE%A1TP%E9%BB%98%E8%AE%A4trace%E8%A1%8C%E4%B8%BA"></a>
-
 #### 接管TP默认trace行为
 
 默认情况, think-monolog 并不会接管ThinkPHP的 trace 逻辑. 二者互不影响.
@@ -153,11 +124,7 @@ if (false !== strpos($log, 'INFO: [ app_begin ] --START--')) { //取消对ThinkP
 
 ---
 
-<a name="%E5%85%B3%E4%BA%8E"></a>
-
 # 关于
-
-<a name="Monolog%E7%AE%80%E4%BB%8B"></a>
 
 ###Monolog简介
 
@@ -172,8 +139,6 @@ Monolog可以把你的日志发送到文件，sockets，收件箱，数据库和
 > Monolog docs: <https://github.com/Seldaek/monolog/tree/master/doc>
 
 ---
-
-<a name="%E6%84%9F%E8%B0%A2"></a>
 
 # 感谢
 
